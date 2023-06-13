@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const Counter = () => {
+const Input = () => {
 	const [txtValue, setTextValue] = useState("");
 
 
@@ -17,4 +17,4 @@ const Counter = () => {
 	)
 }
 
-export default Counter;
+export default Input;
