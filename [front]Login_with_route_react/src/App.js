@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import Login from './Login'
+import Login from './pages/Login'
 import About from './pages/About'
 import Counter from './pages/Counter'
 import Home from './pages/Home'
@@ -9,12 +9,20 @@ import Input2 from './pages/Input2'
 import List from './pages/List'
 import Num from './pages/Num'
 import Axios from './pages/Axios'
+import TodoList from './pages/TodoList'
+import Coin from './pages/Coin'
 
 export default function App() {
     return (
         <div>
             <nav>
                 <Link style={{ margin: '5px' }} to="/">
+                    Coin
+                </Link>
+                <Link style={{ margin: '5px' }} to="/TodoList">
+                    TodoList
+                </Link>
+                <Link style={{ margin: '5px' }} to="/Home">
                     Home
                 </Link>
                 <Link style={{ margin: '5px' }} to="/about">
@@ -43,7 +51,9 @@ export default function App() {
                 </Link>
             </nav>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Coin />} />
+                <Route path="/TodoList" element={<TodoList />} />
+                <Route path="/Home" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/counter" element={<Counter />} />
