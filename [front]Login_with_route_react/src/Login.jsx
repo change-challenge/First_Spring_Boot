@@ -18,7 +18,7 @@ export default function Login() {
     const handleEmail = e => {
         setEmail(e.target.value)
         const regex =
-            /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+            /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
         if (regex.test(email)) {
             setEmailValid(true)
         } else {
@@ -36,7 +36,7 @@ export default function Login() {
     }
 
     const onClickConfirmButton = () => {
-        if (email == User.email && pw == User.pw) {
+        if (email === User.email && pw === User.pw) {
             alert('로그인에 성공했습니다.')
         } else {
             alert('등록되지 않은 회원입니다.')

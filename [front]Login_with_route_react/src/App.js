@@ -7,6 +7,8 @@ import Home from './pages/Home'
 import Input from './pages/Input'
 import Input2 from './pages/Input2'
 import List from './pages/List'
+import Num from './pages/Num'
+import Axios from './pages/Axios'
 
 export default function App() {
     return (
@@ -33,6 +35,12 @@ export default function App() {
                 <Link style={{ margin: '5px' }} to="/list">
                     List
                 </Link>
+                <Link style={{ margin: '5px' }} to="/num">
+                    Num
+                </Link>
+                <Link style={{ margin: '5px' }} to="/axios">
+                    Axios
+                </Link>
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -42,6 +50,8 @@ export default function App() {
                 <Route path="/input" element={<Input />} />
                 <Route path="/input2" element={<Input2 />} />
                 <Route path="/list" element={<List />} />
+                <Route path="/num" element={<Num />} />
+                <Route path="/axios" element={<Axios />} />
             </Routes>
         </div>
     )
