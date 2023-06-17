@@ -1,71 +1,43 @@
-import React, { useState } from 'react'
-import './App.css'
-
-const RecordForm = ({ numList, setNumList }) => {
-    const [num, setNum] = useState(0)
-
-    const deleteAllNum = () => {
-        setNumList([])
-        setNum(0)
-    }
-
-    return (
-        <div>
-            <div>현재 숫자 : {num}</div>
-            <button
-                onClick={() => {
-                    setNum(num + 1)
-                }}
-            >
-                숫자 증가
-            </button>
-            <button
-                onClick={() => {
-                    setNum(num - 1)
-                }}
-            >
-                숫자 감소
-            </button>
-            <button
-                onClick={() => {
-                    setNum(0)
-                }}
-            >
-                숫자 초기화
-            </button>
-            <hr />
-            <button onClick={() => setNumList([...numList, num])}>
-                숫자 기록
-            </button>
-            <button onClick={() => deleteAllNum()}>기록 초기화</button>
-        </div>
-    )
-}
-
-const RecordList = ({ numList }) => {
-    return (
-        <div>
-            <h2>기록된 숫자</h2>
-            <ul>
-                {numList.map(num => (
-                    <li>{num}</li>
-                ))}
-            </ul>
-        </div>
-    )
-}
+import { useEffect, useState } from 'react'
+import Movie from './Movie'
 
 const App = () => {
-    const [numList, setNumList] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [movies, setMovies] = useState([])
+
+    const getMovies = async () => {
+        const response = await fetch(
+            'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year'
+        )
+        const json = await response.json()
+        //const response = await (await fetch(
+        //    'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year'
+        //).json())
+        setMovies(json.data.movies)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        getMovies()
+    }, [])
 
     return (
-        <div
-            style={{ margin: '40px auto', width: '800px', textAlign: 'center' }}
-        >
-            <RecordForm numList={numList} setNumList={setNumList} />
-            <RecordList numList={numList} />
+        <div>
+            {loading ? (
+                <h1>...Loading</h1>
+            ) : (
+                <div>
+                    {movies.map(movie => (
+                        <Movie
+                            coverImg={movie.medium_cover_image}
+                            title={movie.title}
+                            summary={movie.summary}
+                            genres={movie.genres}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     )
 }
-
 export default App

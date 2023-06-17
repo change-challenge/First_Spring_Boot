@@ -11,19 +11,23 @@ import Num from './pages/Num'
 import Axios from './pages/Axios'
 import TodoList from './pages/TodoList'
 import Coin from './pages/Coin'
+import CoinAnswer from './pages/CoinAnswer'
 
 export default function App() {
     return (
         <div>
             <nav>
                 <Link style={{ margin: '5px' }} to="/">
+                    Home
+                </Link>
+                <Link style={{ margin: '5px' }} to="/Coin">
                     Coin
+                </Link>
+                <Link style={{ margin: '5px' }} to="/CoinAnswer">
+                    CoinAnswer
                 </Link>
                 <Link style={{ margin: '5px' }} to="/TodoList">
                     TodoList
-                </Link>
-                <Link style={{ margin: '5px' }} to="/Home">
-                    Home
                 </Link>
                 <Link style={{ margin: '5px' }} to="/about">
                     About
@@ -51,9 +55,10 @@ export default function App() {
                 </Link>
             </nav>
             <Routes>
-                <Route path="/" element={<Coin />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/Coin" element={<Coin />} />
+                <Route path="/CoinAnswer" element={<CoinAnswer />} />
                 <Route path="/TodoList" element={<TodoList />} />
-                <Route path="/Home" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/counter" element={<Counter />} />

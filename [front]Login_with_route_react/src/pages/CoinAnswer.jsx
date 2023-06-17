@@ -9,6 +9,7 @@ const Coin = () => {
 
     const onSubmit = e => {
         e.preventDefault()
+        console.log('hey')
         setStart(true)
         convertCoins()
     }
