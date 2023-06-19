@@ -6,7 +6,7 @@ const MovieDetail = ({ coverImg, title, detail }) => {
     return (
         <div>
             <p>
-                <Link to={`/`}>back</Link>
+                <Link to={process.env.PUBLIC_URL + `/`}>back</Link>
             </p>
             <h2>{title}</h2>
             <img src={coverImg} />
