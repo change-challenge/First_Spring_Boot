@@ -2,20 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const Movie = ({ id, coverImg, title, genres }) => {
+const Movie = ({ id, coverImg, title, rate }) => {
     return (
-        <div>
-            <h2>
-                <Link to={process.env.PUBLIC_URL + `/movie/${id}`}>
-                    {title}
-                </Link>
-            </h2>
+        <div className="movie-container">
             <img src={coverImg} />
-            <ul>
-                {genres.map(g => (
-                    <li key={g}>{g}</li>
-                ))}
-            </ul>
+            <div className="movie-info">
+                <h4>
+                    <Link
+                        style={{ textDecoration: 'none', color: 'black' }}
+                        to={process.env.PUBLIC_URL + `/movie/${id}`}
+                    >
+                        {title}
+                    </Link>
+                </h4>
+                <span>{rate}</span>
+            </div>
         </div>
     )
 }

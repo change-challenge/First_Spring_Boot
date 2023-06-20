@@ -34,14 +34,14 @@ const Home = () => {
             {loading ? (
                 <h1>...Loading</h1>
             ) : (
-                <div>
+                <div className="app-container">
                     {currentPageMovies.map(movie => (
                         <Movie
                             key={movie.id}
                             id={movie.id}
                             coverImg={movie.medium_cover_image}
                             title={movie.title}
-                            genres={movie.genres}
+                            rate={movie.rating}
                         />
                     ))}
                 </div>
