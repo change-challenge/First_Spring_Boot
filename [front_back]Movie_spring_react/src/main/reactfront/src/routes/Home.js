@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 import Movie from '../components/Movie'
 import Pagination from '../components/Pagination'
-import ReactPaginate from 'react-paginate'
+import styled from 'styled-components'
+
+const AppContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
 
 const Home = () => {
     const [loading, setLoading] = useState(true)
@@ -34,7 +40,7 @@ const Home = () => {
             {loading ? (
                 <h1>...Loading</h1>
             ) : (
-                <div className="app-container">
+                <AppContainer>
                     {currentPageMovies.map(movie => (
                         <Movie
                             key={movie.id}
@@ -44,7 +50,7 @@ const Home = () => {
                             rate={movie.rating}
                         />
                     ))}
-                </div>
+                </AppContainer>
             )}
             <Pagination
                 total={movies.length}
