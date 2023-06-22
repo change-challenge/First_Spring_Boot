@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Movie from '../components/Movie'
 import Pagination from '../components/Pagination'
 import styled from 'styled-components'
+import SkeletonMovie from '../components/MovieSkeleton'
 
 const AppContainer = styled.div`
     display: flex;
@@ -38,7 +39,11 @@ const Home = () => {
     return (
         <div>
             {loading ? (
-                <h1>...Loading</h1>
+                <AppContainer>
+                    {Array.from({ length: 10 }).map((_, index) => (
+                        <SkeletonMovie key={index} />
+                    ))}
+                </AppContainer>
             ) : (
                 <AppContainer>
                     {currentPageMovies.map(movie => (
