@@ -41,5 +41,8 @@
             "last 1 safari version"
         ]
     },
-    "homepage": "https://change-challenge.github.io/Web_Practice"
+    "homepage": "https://change-challenge.github.io/Web_Practice",
+    "devDependencies": {
+        "prettier": "2.8.8"
+    }
 }
