@@ -1,11 +1,20 @@
-import React, { useContext } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Logo from '../../assets/logo.svg'
 import * as S from './style'
 import Text from '../Text/index'
 import Theme from '../../styles/theme'
 
 function Header() {
+  const navigate = useNavigate()
+
+  const logoClick = () => {
+    navigate('/')
+  }
+
+  const loginClick = () => {
+    navigate('/login')
+  }
   //  const { auth, setAuth } = useContext(AuthContext)
   //  const navigate = useNavigate()
 
@@ -23,7 +32,7 @@ function Header() {
   return (
     <S.HeaderContainer>
       <S.Layout>
-        <div>
+        <div onClick={logoClick}>
           <img
             src={Logo}
             alt="logo"
@@ -39,7 +48,7 @@ function Header() {
             text-align={'center'}
           />
         </div>
-        <S.LinkButtonWrapper>
+        <S.LinkButtonWrapper onClick={loginClick}>
           <Text
             text="login"
             color={Theme.colors.grey9}

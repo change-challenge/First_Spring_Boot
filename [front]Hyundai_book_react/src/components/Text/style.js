@@ -7,6 +7,7 @@ const StyledText = styled.p`
   font-weight: ${({ fontWeight }) => fontWeight};
   margin: ${({ margin }) => margin};
   text-align: ${({ textAlign }) => textAlign};
+  cursor: pointer;
 `
 
 export { StyledText }
