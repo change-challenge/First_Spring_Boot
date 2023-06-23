@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Movie from '../components/Movie'
 import Pagination from '../components/Pagination'
 import styled from 'styled-components'
-import SkeletonMovie from '../components/MovieSkeleton'
 
 const AppContainer = styled.div`
     display: flex;
@@ -11,7 +10,6 @@ const AppContainer = styled.div`
 `
 
 const Home = () => {
-    const [loading, setLoading] = useState(true)
     const [movies, setMovies] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -27,7 +25,6 @@ const Home = () => {
         //    'https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year'
         //).json())
         setMovies(json.data.movies)
-        setLoading(false)
     }
 
     useEffect(() => {
@@ -38,25 +35,17 @@ const Home = () => {
 
     return (
         <div>
-            {loading ? (
-                <AppContainer>
-                    {Array.from({ length: 10 }).map((_, index) => (
-                        <SkeletonMovie key={index} />
-                    ))}
-                </AppContainer>
-            ) : (
-                <AppContainer>
-                    {currentPageMovies.map(movie => (
-                        <Movie
-                            key={movie.id}
-                            id={movie.id}
-                            coverImg={movie.medium_cover_image}
-                            title={movie.title}
-                            rate={movie.rating}
-                        />
-                    ))}
-                </AppContainer>
-            )}
+            <AppContainer>
+                {currentPageMovies.map(movie => (
+                    <Movie
+                        key={movie.id}
+                        id={movie.id}
+                        coverImg={movie.medium_cover_image}
+                        title={movie.title}
+                        rate={movie.rating}
+                    />
+                ))}
+            </AppContainer>
             <Pagination
                 total={movies.length}
                 limit={perPage}

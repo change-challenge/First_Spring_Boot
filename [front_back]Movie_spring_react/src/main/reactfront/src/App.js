@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './routes/Home'
 import Detail from './routes/Detail'
 
 const App = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path={process.env.PUBLIC_URL + '/'} element={<Home />} />
-                <Route
-                    path={process.env.PUBLIC_URL + '/movie/:id'}
-                    element={<Detail />}
-                />
-            </Routes>
-        </Router>
+        <Suspense fallback={<div>loading APP</div>}>
+            <Router>
+                <Routes>
+                    <Route
+                        path={process.env.PUBLIC_URL + '/'}
+                        element={<Home />}
+                    />
+                    <Route
+                        path={process.env.PUBLIC_URL + '/movie/:id'}
+                        element={<Detail />}
+                    />
+                </Routes>
+            </Router>
+        </Suspense>
     )
 }
 export default App
