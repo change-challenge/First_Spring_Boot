@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const HeaderContainer = styled.header`
   box-sizing: content-box;
@@ -6,6 +7,7 @@ const HeaderContainer = styled.header`
   padding: 10px 0;
   display: flex;
   background-color: white;
+  padding-top: 20px;
 `
 
 const Layout = styled.div`
@@ -15,27 +17,21 @@ const Layout = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
-
-    &:active {
-      text-decoration: none;
-    }
-  }
+  border-bottom: 1px solid ${theme.colors.grey3};
 `
+
 const LogoWrapper = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding-bottom: 30px;
 `
 
 const NavWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 200px;
+  padding-bottom: 38px;
 `
 
 const LinkButtonWrapper = styled.ul`
