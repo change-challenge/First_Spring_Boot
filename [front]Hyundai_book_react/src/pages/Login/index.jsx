@@ -1,5 +1,6 @@
 import Theme from '../../styles/theme'
 import { Text } from '../../components/index'
+import Logo from '../../assets/logo.svg'
 import * as S from './style'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
@@ -55,6 +56,23 @@ function Login() {
               fontWeight={'bold'}
               fontSize={Theme.fontSize.sz32}
               text-align={'center'}
+              vertical-align={'middle'}
+            />
+            <Text
+              text="|"
+              color={Theme.colors.grey3}
+              fontSize={Theme.fontSize.sz32}
+              fontWeight={'lighter'}
+              text-align={'center'}
+              margin={'0 0 0 20px'}
+              vertical-align={'middle'}
+            />
+            <img
+              src={Logo}
+              alt="logo"
+              width="120px"
+              height="36px"
+              draggable={false}
             />
           </S.TitleWrap>
 

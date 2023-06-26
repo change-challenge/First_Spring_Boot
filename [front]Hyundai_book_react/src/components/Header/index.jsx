@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../../assets/logo.svg'
 import * as S from './style'
-import Text from '../Text/index'
+import { Text } from '../index'
 import Theme from '../../styles/theme'
 
 function Header() {
@@ -54,6 +54,7 @@ function Header() {
             color={Theme.colors.grey9}
             fontSize={'17px'}
             fontFamily={'Roboto'}
+            cursor={'pointer'}
           />
         </S.LinkButtonWrapper>
       </S.Layout>

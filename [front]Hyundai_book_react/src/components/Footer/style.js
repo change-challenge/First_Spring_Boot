@@ -3,7 +3,7 @@ import theme from '../../styles/theme'
 
 const FooterWrapper = styled.footer`
   box-sizing: content-box;
-  margin: 0 32px;
+  margin: 32px 32px;
   padding: 10px 0;
   display: flex;
   background-color: white;
@@ -16,6 +16,8 @@ const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid ${theme.colors.grey3};
+  padding-top: 38px;
 `
 
 const NameContents = styled.div`

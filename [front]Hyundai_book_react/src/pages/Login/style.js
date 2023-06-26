@@ -30,6 +30,7 @@ const InnerContainer = styled.div`
 const TitleWrap = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 50px;
   font-size: ${theme.fontSize.sz32};
   font-weight: 700;

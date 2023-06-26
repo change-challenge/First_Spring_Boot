@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components'
 
 const StyledText = styled.p`
@@ -7,7 +8,17 @@ const StyledText = styled.p`
   font-weight: ${({ fontWeight }) => fontWeight};
   margin: ${({ margin }) => margin};
   text-align: ${({ textAlign }) => textAlign};
-  cursor: pointer;
+  vertical-align: ${({ verticalAlign }) => verticalAlign};
+  cursor: ${({ cursor }) => cursor};
 `
 
-export { StyledText }
+const Text = ({ text, children, ...props }) => {
+  return (
+    <StyledText {...props}>
+      {text}
+      {children}
+    </StyledText>
+  )
+}
+
+export default memo(Text)
