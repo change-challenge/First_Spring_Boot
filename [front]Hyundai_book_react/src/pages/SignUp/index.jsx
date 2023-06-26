@@ -5,7 +5,7 @@ import * as S from './style'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 
-function Login() {
+function SignUp() {
   const [email, setEmail] = useState('')
   const [pw, setPw] = useState('')
 
@@ -51,7 +51,7 @@ function Login() {
         <S.InnerContainer>
           <S.TitleWrap>
             <Text
-              text="로그인"
+              text="회원가입"
               color={Theme.colors.black}
               fontWeight={'bold'}
               fontSize={Theme.fontSize.sz32}
@@ -118,4 +118,4 @@ function Login() {
   )
 }
 
-export default Login
+export default SignUp

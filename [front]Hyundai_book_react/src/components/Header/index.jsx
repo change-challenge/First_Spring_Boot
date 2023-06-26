@@ -1,11 +1,22 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../assets/logo.svg'
 import * as S from './style'
 import { Text } from '../index'
 import Theme from '../../styles/theme'
 
 function Header() {
+  const basicNavMenu = [
+    {
+      linkTo: '/signup',
+      text: '회원가입',
+    },
+    {
+      linkTo: '/login',
+      text: '로그인',
+    },
+  ]
+
   const navigate = useNavigate()
 
   const logoClick = () => {
@@ -32,7 +43,7 @@ function Header() {
   return (
     <S.HeaderContainer>
       <S.Layout>
-        <div onClick={logoClick}>
+        <S.LogoWrapper onClick={logoClick}>
           <img
             src={Logo}
             alt="logo"
@@ -47,16 +58,40 @@ function Header() {
             fontSize={'10px'}
             text-align={'center'}
           />
-        </div>
-        <S.LinkButtonWrapper onClick={loginClick}>
-          <Text
-            text="login"
-            color={Theme.colors.grey9}
-            fontSize={'17px'}
-            fontFamily={'Roboto'}
-            cursor={'pointer'}
-          />
-        </S.LinkButtonWrapper>
+        </S.LogoWrapper>
+        <S.NavWrapper>
+          <S.LinkButtonWrapper>
+            {basicNavMenu.map(menu => {
+              return (
+                <li key={menu.linkTo}>
+                  <Link
+                    style={{
+                      marginRight: '2rem',
+                      padding: '0 10px',
+                      lineHeight: '1em',
+                      height: '1em',
+                    }}
+                    to={menu.linkTo}
+                  >
+                    <span
+                      style={{
+                        display: 'inline-block',
+                      }}
+                    >
+                      <Text
+                        text={menu.text}
+                        color={Theme.colors.grey9}
+                        fontSize={'17px'}
+                        fontFamily={'Roboto'}
+                        cursor={'pointer'}
+                      />
+                    </span>
+                  </Link>
+                </li>
+              )
+            })}
+          </S.LinkButtonWrapper>
+        </S.NavWrapper>
       </S.Layout>
     </S.HeaderContainer>
   )

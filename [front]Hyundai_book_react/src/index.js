@@ -6,8 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './styles/GlobalStyle'
 import theme from './styles/theme'
 import { Header, Footer } from './components/index'
-import Main from './pages/Main/index'
-import Login from './pages/Login/index'
+import { Main, Login, SignUp } from './pages/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -20,6 +19,7 @@ root.render(
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
           </Routes>
           <Footer />
         </Router>

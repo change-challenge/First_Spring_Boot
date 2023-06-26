@@ -1,11 +1,19 @@
 import styled from 'styled-components'
 
+const HeaderContainer = styled.header`
+  box-sizing: content-box;
+  margin: 0 32px;
+  padding: 10px 0;
+  display: flex;
+  background-color: white;
+`
+
 const Layout = styled.div`
   min-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
 
   a {
@@ -17,23 +25,23 @@ const Layout = styled.div`
     }
   }
 `
-
-const HeaderContainer = styled.header`
-  box-sizing: content-box;
-  margin: 0 32px;
-  padding: 10px 0;
+const LogoWrapper = styled.div`
+  cursor: pointer;
   display: flex;
-  background-color: white;
-`
-
-const LinkButtonWrapper = styled.div`
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: right;
-
-  a {
-    margin-right: 48px;
-  }
 `
 
-export { HeaderContainer, Layout, LinkButtonWrapper }
+const NavWrapper = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+`
+
+const LinkButtonWrapper = styled.ul`
+  display: flex;
+  justify-content: right;
+  margin: 1rem 0 0 0;
+`
+
+export { HeaderContainer, LogoWrapper, Layout, LinkButtonWrapper, NavWrapper }
