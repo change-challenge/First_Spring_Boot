@@ -1,20 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './styles/GlobalStyle'
 import theme from './styles/theme'
-import router from './router/index'
+import Header from './components/Header/index'
+import Footer from './components/Footer/index'
+import Main from './pages/Main/index'
+import Login from './pages/Login/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <>
       <GlobalStyle />
-
       <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+          </Routes>
+          <Footer />
+        </Router>
       </ThemeProvider>
     </>
   </React.StrictMode>

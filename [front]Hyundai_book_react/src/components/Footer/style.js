@@ -16,25 +16,20 @@ const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
-
-    &:active {
-      text-decoration: none;
-    }
-  }
 `
 
 const NameContents = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
-  color: ${theme.colors.black};
+  color: ${theme.colors.main};
+  font-weight: bold;
+  font-size: ${theme.fontSize.sz16};
 `
 
 const ContactCopyright = styled.div`
   padding-left: 2.4rem;
+  color: ${theme.colors.grey9};
+  font-size: ${theme.fontSize.sz12};
 `
 export { FooterWrapper, InnerWrapper, NameContents, ContactCopyright }
