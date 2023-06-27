@@ -24,6 +24,7 @@ const colors = {
 
 const fontSize = {
   sz48: '48px',
+  sz40: '40px',
   sz32: '32px',
   sz24: '24px',
   sz20: '20px',

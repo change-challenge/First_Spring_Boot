@@ -6,7 +6,7 @@ const Container = styled.div`
   min-height: 500px;
   flex-direction: column;
   align-items: center;
-  padding: 100px 12rem;
+  padding: 50px 12rem;
 `
 
 const InnerContainer = styled.div`
@@ -14,7 +14,7 @@ const InnerContainer = styled.div`
   top: 0;
   bottom: 0;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   padding: 50px 50px;
   left: 50%;
   transform: translate(-50%, 0);
@@ -69,13 +69,19 @@ const Input = styled.input`
   }
 `
 
+const OkMessageWrap = styled.div`
+  margin-top: 8px;
+  color: #259a35;
+  font-size: 12px;
+`
+
 const ErrorMessageWrap = styled.div`
   margin-top: 8px;
   color: #ef0000;
   font-size: 12px;
 `
 
-const LoginButton = styled.button`
+const SignUpButton = styled.button`
   width: 100%;
   height: 48px;
   border: none;
@@ -91,8 +97,7 @@ const LoginButton = styled.button`
     color: white;
   }
 `
-
-const SignUpButton = styled.button`
+const ToLoginButton = styled.button`
   width: 100%;
   height: 48px;
   border: 0.5px solid ${theme.colors.main};
@@ -116,7 +121,8 @@ export {
   ContentWrap,
   InputWrap,
   Input,
+  OkMessageWrap,
   ErrorMessageWrap,
-  LoginButton,
   SignUpButton,
+  ToLoginButton,
 }

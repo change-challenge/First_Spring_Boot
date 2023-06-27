@@ -1,9 +1,11 @@
 import Theme from '../../styles/theme'
-import { Text } from '../../components/index'
+import { useNavigate } from 'react-router-dom'
+import { Text, LabelInput } from '../../components/index'
 import Logo from '../../assets/logo.svg'
 import * as S from './style'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import theme from '../../styles/theme'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -12,6 +14,7 @@ function Login() {
   const [emailValid, setEmailValid] = useState(false)
   const [pwValid, setPwValid] = useState(false)
   const [notAllow, setNotAllow] = useState(true)
+  const navigate = useNavigate()
 
   const handleEmail = e => {
     setEmail(e.target.value)
@@ -37,6 +40,10 @@ function Login() {
     alert('로그인에 성공했습니다.')
   }
 
+  const onClickSignUpButton = () => {
+    navigate('/signUp')
+  }
+
   useEffect(() => {
     if (emailValid && pwValid) {
       setNotAllow(false)
@@ -52,20 +59,20 @@ function Login() {
           <S.TitleWrap>
             <Text
               text="로그인"
-              color={Theme.colors.black}
+              color={theme.colors.black}
               fontWeight={'bold'}
-              fontSize={Theme.fontSize.sz32}
-              text-align={'center'}
-              vertical-align={'middle'}
+              fontSize={theme.fontSize.sz32}
+              textAlign={'center'}
+              verticalAlign={'middle'}
             />
             <Text
               text="|"
-              color={Theme.colors.grey3}
-              fontSize={Theme.fontSize.sz32}
+              color={theme.colors.grey3}
+              fontSize={theme.fontSize.sz}
               fontWeight={'lighter'}
-              text-align={'center'}
+              textAlign={'center'}
               margin={'0 0 0 20px'}
-              vertical-align={'middle'}
+              verticalAlign={'middle'}
             />
             <img
               src={Logo}
@@ -77,38 +84,34 @@ function Login() {
           </S.TitleWrap>
 
           <S.ContentWrap>
-            <S.InputWrap>
-              <S.Input
-                type="text"
-                placeholder="아이디"
-                value={email}
-                onChange={handleEmail}
-              />
-            </S.InputWrap>
-            <S.ErrorMessageWrap>
-              {!emailValid && email.length > 0 && (
+            <LabelInput
+              type="text"
+              placeholder="아이디"
+              value={email}
+              onChange={handleEmail}
+            />
+            {!emailValid && email.length > 0 && (
+              <S.ErrorMessageWrap>
                 <div>올바른 이메일을 입력해주세요.</div>
-              )}
-            </S.ErrorMessageWrap>
-            <S.InputWrap>
-              <S.Input
-                type="password"
-                placeholder="비밀번호"
-                value={pw}
-                onChange={handlePassword}
-              />
-            </S.InputWrap>
-            <S.ErrorMessageWrap>
-              {!pwValid && pw.length > 0 && (
+              </S.ErrorMessageWrap>
+            )}
+            <LabelInput
+              type="password"
+              placeholder="비밀번호"
+              value={pw}
+              onChange={handlePassword}
+            />
+            {!pwValid && pw.length > 0 && (
+              <S.ErrorMessageWrap>
                 <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
-              )}
-            </S.ErrorMessageWrap>
+              </S.ErrorMessageWrap>
+            )}
           </S.ContentWrap>
           <div style={{ marginTop: '50px' }}>
             <S.LoginButton onClick={onClickConfirmButton} disabled={notAllow}>
               로그인
             </S.LoginButton>
-            <S.SignUpButton onClick={onClickConfirmButton}>
+            <S.SignUpButton onClick={onClickSignUpButton}>
               회원가입
             </S.SignUpButton>
           </div>

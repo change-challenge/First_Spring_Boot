@@ -6,7 +6,7 @@ const Container = styled.div`
   min-height: 500px;
   flex-direction: column;
   align-items: center;
-  padding: 100px 12rem;
+  padding: 50px 12rem;
 `
 
 const InnerContainer = styled.div`
@@ -14,7 +14,7 @@ const InnerContainer = styled.div`
   top: 0;
   bottom: 0;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   padding: 50px 50px;
   left: 50%;
   transform: translate(-50%, 0);
@@ -40,33 +40,6 @@ const TitleWrap = styled.div`
 const ContentWrap = styled.div`
   margin-top: 26px;
   flex: 1;
-`
-
-const InputWrap = styled.div`
-  display: flex;
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 8px;
-  background-color: white;
-  border: 1px solid ${theme.colors.grey4};
-  margin-top: 15px;
-
-  &:focus-within {
-    border: 1px solid ${theme.colors.main};
-  }
-`
-
-const Input = styled.input`
-  width: 100%;
-  outline: none;
-  border: none;
-  height: 17px;
-  font-size: 14px;
-  font-weight: 400;
-
-  &::placeholder {
-    color: ${theme.colors.grey2};
-  }
 `
 
 const ErrorMessageWrap = styled.div`
@@ -114,8 +87,6 @@ export {
   InnerContainer,
   TitleWrap,
   ContentWrap,
-  InputWrap,
-  Input,
   ErrorMessageWrap,
   LoginButton,
   SignUpButton,

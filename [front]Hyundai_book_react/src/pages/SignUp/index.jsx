@@ -1,17 +1,25 @@
 import Theme from '../../styles/theme'
-import { Text } from '../../components/index'
+import { useNavigate } from 'react-router-dom'
+import { Text, LabelInput } from '../../components/index'
 import Logo from '../../assets/logo.svg'
 import * as S from './style'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import theme from '../../styles/theme'
 
 function SignUp() {
   const [email, setEmail] = useState('')
   const [pw, setPw] = useState('')
+  const [pwSame, setPwSame] = useState('')
+  const [name, setName] = useState('')
 
   const [emailValid, setEmailValid] = useState(false)
   const [pwValid, setPwValid] = useState(false)
+  const [pwSameValid, setPwSameValid] = useState(false)
+
   const [notAllow, setNotAllow] = useState(true)
+
+  const navigate = useNavigate()
 
   const handleEmail = e => {
     setEmail(e.target.value)
@@ -33,17 +41,32 @@ function SignUp() {
     setPwValid(isValid)
   }
 
+  const handlePasswordSame = e => {
+    const value = e.target.value
+    setPwSame(value)
+    const isValid = value == pw
+    setPwSameValid(isValid)
+  }
+  const handleName = e => {
+    const value = e.target.value
+    setName(value)
+  }
+
   const onClickConfirmButton = () => {
     alert('로그인에 성공했습니다.')
   }
 
+  const onClickSignUpButton = () => {
+    navigate('/login')
+  }
+
   useEffect(() => {
-    if (emailValid && pwValid) {
+    if (emailValid && pwValid && pwSameValid) {
       setNotAllow(false)
       return
     }
     setNotAllow(true)
-  }, [emailValid, pwValid])
+  }, [emailValid, pwValid, pwSameValid])
 
   return (
     <>
@@ -52,20 +75,20 @@ function SignUp() {
           <S.TitleWrap>
             <Text
               text="회원가입"
-              color={Theme.colors.black}
+              color={theme.colors.black}
               fontWeight={'bold'}
-              fontSize={Theme.fontSize.sz32}
-              text-align={'center'}
-              vertical-align={'middle'}
+              fontSize={theme.fontSize.sz32}
+              textAlign={'center'}
+              verticalAlign={'middle'}
             />
             <Text
               text="|"
-              color={Theme.colors.grey3}
-              fontSize={Theme.fontSize.sz32}
+              color={theme.colors.grey3}
+              fontSize={theme.fontSize.sz}
               fontWeight={'lighter'}
-              text-align={'center'}
+              textAlign={'center'}
               margin={'0 0 0 20px'}
-              vertical-align={'middle'}
+              verticalAlign={'middle'}
             />
             <img
               src={Logo}
@@ -77,40 +100,76 @@ function SignUp() {
           </S.TitleWrap>
 
           <S.ContentWrap>
-            <S.InputWrap>
-              <S.Input
-                type="text"
-                placeholder="아이디"
-                value={email}
-                onChange={handleEmail}
-              />
-            </S.InputWrap>
-            <S.ErrorMessageWrap>
-              {!emailValid && email.length > 0 && (
-                <div>올바른 이메일을 입력해주세요.</div>
-              )}
-            </S.ErrorMessageWrap>
-            <S.InputWrap>
-              <S.Input
-                type="password"
-                placeholder="비밀번호"
-                value={pw}
-                onChange={handlePassword}
-              />
-            </S.InputWrap>
-            <S.ErrorMessageWrap>
-              {!pwValid && pw.length > 0 && (
-                <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
-              )}
-            </S.ErrorMessageWrap>
+            <LabelInput
+              type="text"
+              placeholder="아이디"
+              value={email}
+              onChange={handleEmail}
+            />
+            {emailValid
+              ? email.length > 0 && (
+                  <S.OkMessageWrap>
+                    <div>사용 가능한 이메일입니다.</div>
+                  </S.OkMessageWrap>
+                )
+              : email.length > 0 && (
+                  <S.ErrorMessageWrap>
+                    <div>올바른 이메일을 입력해주세요.</div>
+                  </S.ErrorMessageWrap>
+                )}
+            <LabelInput
+              type="text"
+              placeholder="이름"
+              value={name}
+              onChange={handleName}
+            />
+            {name.length > 0 && name.length < 2 && (
+              <S.ErrorMessageWrap>
+                <div>이름은 2자 이상만 가능합니다.</div>
+              </S.ErrorMessageWrap>
+            )}
+            <LabelInput
+              type="password"
+              placeholder="비밀번호"
+              value={pw}
+              onChange={handlePassword}
+            />
+            {pwValid
+              ? pw.length > 0 && (
+                  <S.OkMessageWrap>
+                    <div>사용 가능한 비밀번호입니다.</div>
+                  </S.OkMessageWrap>
+                )
+              : pw.length > 0 && (
+                  <S.ErrorMessageWrap>
+                    <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
+                  </S.ErrorMessageWrap>
+                )}
+            <LabelInput
+              type="password"
+              placeholder="비밀번호 재확인"
+              value={pwSame}
+              onChange={handlePasswordSame}
+            />
+            {pwSameValid
+              ? pwSame.length > 0 && (
+                  <S.OkMessageWrap>
+                    <div>비밀번호가 일치합니다.</div>
+                  </S.OkMessageWrap>
+                )
+              : pwSame.length > 0 && (
+                  <S.ErrorMessageWrap>
+                    <div>비밀번호가 일치하지 않습니다.</div>
+                  </S.ErrorMessageWrap>
+                )}
           </S.ContentWrap>
           <div style={{ marginTop: '50px' }}>
-            <S.LoginButton onClick={onClickConfirmButton} disabled={notAllow}>
-              로그인
-            </S.LoginButton>
-            <S.SignUpButton onClick={onClickConfirmButton}>
-              회원가입
+            <S.SignUpButton onClick={onClickConfirmButton} disabled={notAllow}>
+              가입하기
             </S.SignUpButton>
+            <S.ToLoginButton onClick={onClickSignUpButton}>
+              로그인 페이지로
+            </S.ToLoginButton>
           </div>
         </S.InnerContainer>
       </S.Container>
