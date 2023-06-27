@@ -1,4 +1,3 @@
-import Theme from '../../styles/theme'
 import { useNavigate } from 'react-router-dom'
 import { Text, LabelInput } from '../../components/index'
 import Logo from '../../assets/logo.svg'

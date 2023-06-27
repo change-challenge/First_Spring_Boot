@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const InputWrap = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const InputWrap = styled.div`
   margin-top: 15px;
 
   &:focus-within {
-    border: 1px solid ${({ theme }) => theme.colors.main};
+    border: 1.5px solid ${({ theme }) => theme.colors.main};
   }
 `
 
@@ -24,7 +25,7 @@ const Input = styled.input`
   font-weight: 400;
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.grey2};
+    color: ${({ theme }) => theme.colors.grey4};
   }
 `
 
@@ -34,14 +35,13 @@ const LabelInput = forwardRef(
       type = 'text',
       value = '',
       onChange,
-      className = '',
       placeholder = 'Default',
       ...restProps
     },
     ref
   ) => {
     return (
-      <InputWrap className={className}>
+      <InputWrap>
         <Input
           type={type}
           value={value}

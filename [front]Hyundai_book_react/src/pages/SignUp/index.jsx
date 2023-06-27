@@ -1,4 +1,3 @@
-import Theme from '../../styles/theme'
 import { useNavigate } from 'react-router-dom'
 import { Text, LabelInput } from '../../components/index'
 import Logo from '../../assets/logo.svg'
@@ -14,6 +13,7 @@ function SignUp() {
   const [name, setName] = useState('')
 
   const [emailValid, setEmailValid] = useState(false)
+  const [nameValid, setNameValid] = useState(false)
   const [pwValid, setPwValid] = useState(false)
   const [pwSameValid, setPwSameValid] = useState(false)
 
@@ -44,12 +44,14 @@ function SignUp() {
   const handlePasswordSame = e => {
     const value = e.target.value
     setPwSame(value)
-    const isValid = value == pw
+    const isValid = value === pw
     setPwSameValid(isValid)
   }
   const handleName = e => {
     const value = e.target.value
     setName(value)
+    const isValid = value.length > 2
+    setNameValid(isValid)
   }
 
   const onClickConfirmButton = () => {
@@ -61,12 +63,12 @@ function SignUp() {
   }
 
   useEffect(() => {
-    if (emailValid && pwValid && pwSameValid) {
+    if (emailValid && pwValid && pwSameValid && nameValid) {
       setNotAllow(false)
       return
     }
     setNotAllow(true)
-  }, [emailValid, pwValid, pwSameValid])
+  }, [emailValid, pwValid, pwSameValid, nameValid])
 
   return (
     <>
@@ -165,7 +167,7 @@ function SignUp() {
           </S.ContentWrap>
           <div style={{ marginTop: '50px' }}>
             <S.SignUpButton onClick={onClickConfirmButton} disabled={notAllow}>
-              가입하기
+              회원가입
             </S.SignUpButton>
             <S.ToLoginButton onClick={onClickSignUpButton}>
               로그인 페이지로

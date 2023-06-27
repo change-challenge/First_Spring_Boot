@@ -1,7 +1,9 @@
+import MainBanner from './MainBanner'
+
 function Main() {
   return (
     <>
-      <div>Main</div>
+      <MainBanner />
     </>
   )
 }
