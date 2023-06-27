@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import SearchIcon from '../../assets/search-icon'
 import theme from '../../styles/theme'
+import { useState } from 'react'
 
 const SearchBar = styled.form`
   width: 100%;
@@ -29,13 +30,34 @@ const SearchInput = styled.input`
 `
 
 const Button = styled.button`
-  background-color: #f2f1fa;
+  background-color: transparent;
   display: flex;
   align-items: center;
   width: 30px;
   height: 70%;
   cursor: pointer;
   border: none;
+`
+
+const ClearButton = styled.button`
+  background-color: transparent;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none;
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+  font-size: 17px;
+  color: ${theme.colors.black};
+
+  &:focus {
+    outline: none;
+  }
 `
 
 const IconButton = ({ icon, type = 'button', ...rest }) => {
@@ -46,15 +68,28 @@ const IconButton = ({ icon, type = 'button', ...rest }) => {
   )
 }
 
-export default function SearchBarComponent({ onSubmit, value, onChange }) {
+export default function SearchBarComponent({ onSubmit }) {
+  const [searchValue, setSearchValue] = useState('')
+
+  const handleInputChange = e => {
+    setSearchValue(e.target.value)
+  }
+
+  const handleClearClick = () => {
+    setSearchValue('')
+  }
+
   return (
     <SearchBar onSubmit={onSubmit}>
       <SearchInput
         type="text"
-        value={value}
-        onChange={onChange}
+        value={searchValue}
+        onChange={handleInputChange}
         placeholder="도셔명을 입력해주세요."
       />
+      <ClearButton visible={searchValue !== ''} onClick={handleClearClick}>
+        X
+      </ClearButton>
       <IconButton icon={<SearchIcon />} type="submit" />
     </SearchBar>
   )
