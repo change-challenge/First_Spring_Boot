@@ -6,7 +6,16 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './styles/GlobalStyle'
 import theme from './styles/theme'
 import { Header, Footer } from './components/index'
-import { Main, Login, SignUp } from './pages/index'
+import {
+  Main,
+  Login,
+  SignUp,
+  Admin,
+  AdminBookList,
+  AdminRentList,
+  AdminUserList,
+  AdminWishBookList,
+} from './pages/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -20,7 +29,15 @@ root.render(
             <Route path="/" element={<Main />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/admin/*" element={<Admin />}>
+              <Route index element={<AdminUserList />} />
+              <Route path="userlist" element={<AdminUserList />} />
+              <Route path="rentlist" element={<AdminRentList />} />
+              <Route path="booklist" element={<AdminBookList />} />
+              <Route path="wishbooklist" element={<AdminWishBookList />} />
+            </Route>
           </Routes>
+
           <Footer />
         </Router>
       </ThemeProvider>

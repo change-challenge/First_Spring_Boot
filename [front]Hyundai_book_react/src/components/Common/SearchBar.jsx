@@ -3,7 +3,7 @@ import SearchIcon from '../../assets/search-icon'
 import theme from '../../styles/theme'
 import { useState } from 'react'
 
-const SearchBar = styled.form`
+const SearchForm = styled.form`
   width: 100%;
   height: 50px;
   min-height: 50px;
@@ -68,7 +68,7 @@ const IconButton = ({ icon, type = 'button', ...rest }) => {
   )
 }
 
-export default function SearchBarComponent({ onSubmit }) {
+const SearchBar = ({ onSubmit }) => {
   const [searchValue, setSearchValue] = useState('')
 
   const handleInputChange = e => {
@@ -80,7 +80,7 @@ export default function SearchBarComponent({ onSubmit }) {
   }
 
   return (
-    <SearchBar onSubmit={onSubmit}>
+    <SearchForm onSubmit={onSubmit}>
       <SearchInput
         type="text"
         value={searchValue}
@@ -91,6 +91,8 @@ export default function SearchBarComponent({ onSubmit }) {
         X
       </ClearButton>
       <IconButton icon={<SearchIcon />} type="submit" />
-    </SearchBar>
+    </SearchForm>
   )
 }
+
+export default SearchBar

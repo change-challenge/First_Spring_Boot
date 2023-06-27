@@ -1,3 +1,8 @@
 export { default as Login } from './Login/index'
 export { default as Main } from './Main/index'
 export { default as SignUp } from './SignUp/index'
+export { default as Admin } from './Admin/index'
+export { default as AdminBookList } from './Admin/BookList/index'
+export { default as AdminRentList } from './Admin/RentList/index'
+export { default as AdminUserList } from './Admin/UserList/index'
+export { default as AdminWishBookList } from './Admin/WishBookList/index'
